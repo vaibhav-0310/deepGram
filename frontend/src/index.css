@@ -1,0 +1,31 @@
+.search{
+    border-right: none !important;
+}
+.me-2{
+    border-left: none !important;
+}
+.navbar-brand{
+    color: blue !important;
+    font-weight: bolder;
+}
+h2{
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+.basic{
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 20px ;
+    padding: 5px;
+    width: 100%;
+}
+.joy{
+    padding: 0px !important;
+}
+.signup{
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 20px ;
+    padding: 10px 10px 10px 10px;
+    width: 100%;
+}

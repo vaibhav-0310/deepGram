@@ -21,6 +21,7 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
+            <img src="./logo.png" style={{width:"10%"}}/> &nbsp; 
             DeepGram
           </a>
           <button

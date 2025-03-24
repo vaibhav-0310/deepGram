@@ -14,10 +14,7 @@ function Posts() {
         console.log(res.data);
       })
       .catch((err) => console.error("Error fetching user data:", err));
-  }, []);
-
-  useEffect(() => {
-    axios.get("http://localhost:8080/posts")
+      axios.get(`http://localhost:8080/posts/${id}`)
       .then((res) => {
         setPosts(res.data);
         console.log(res.data);

@@ -14,7 +14,7 @@ function Mind() {
   };
   const handlePost = () => {
     try {
-      axios.post("http://localhost:8080/posts", formdata);
+      axios.post(`http://localhost:8080/posts/${id}`, formdata);
     } catch (e) {
       console.log(e);
     }

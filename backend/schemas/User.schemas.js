@@ -1,23 +1,15 @@
+import mongoose, { Schema } from "mongoose";
+import passportLocalMongoose from "passport-local-mongoose";
 
-import mongoose from "mongoose";
-
-const UserSchema= new mongoose.Schema({
-    email:{
-        type:String,
-        required:true,
-        unique:true,
-    },
-    name:{
-        type:String,
-        required:true,
-    },
-    username:{
-        type:String,
-        required:true,
-        unique:true,
-    },
-    picture:String,
-});
+// Make sure your User schema looks something like this
+const UserSchema = new mongoose.Schema({
+    email: String,
+    name: String,
+    username: String,
+    picture: String,
+    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Posts' }]
+  });
+UserSchema.plugin(passportLocalMongoose);
 
 const User=mongoose.model("User",UserSchema);
 

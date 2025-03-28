@@ -5,11 +5,10 @@ import bodyParser from "body-parser";
 import User from "./schemas/User.schemas.js";
 import Posts from "./schemas/Posts.schemas.js";
 import passport from "passport";
-import { Strategy as LocalStrategy, Strategy } from "passport-local";
+import { Strategy as LocalStrategy } from "passport-local";
 import UserRoutes from "./routes/User.routes.js";
 import PostsRoutes from "./routes/Posts.routes.js";
 import DashboardRoutes from "./routes/Dashboard.routes.js";
-
 import session from "express-session";
 import cookieParser from "cookie-parser";
 import MongoStore from "connect-mongo";
@@ -37,10 +36,17 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new Strategy(User.authenticate()));
+passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+app.use((req,res,next)=>{
+  const curr = req.user;
+  res.locals.curr = curr;
+  console.log(curr);
+  next();
+});
 
 app.use(UserRoutes);
 app.use(DashboardRoutes);

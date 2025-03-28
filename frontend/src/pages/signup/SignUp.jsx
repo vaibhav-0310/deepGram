@@ -11,7 +11,7 @@ function SignUp() {
     picture: "",
   });
 
-  const navigate = useNavigate(); // ✅ Initialize `useNavigate` here
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -93,11 +93,11 @@ function SignUp() {
                 placeholder="Profile Picture"
                 type="text"
                 name="picture"
-                className="signup"
+                className="signup mb-3"
                 value={formData.picture}
                 onChange={handleChange}
                 required
-              />
+              /><br></br>
 
               <button type="submit" className="btn btn-primary">Submit</button>
             </form>

@@ -23,4 +23,16 @@ router.get("/posts/:id", async (req, res) => {
   }
 });
 
+router.post("/follow/:id", async (req, res) => {
+  try {
+    let { follows } = req.body;
+    let { id } = req.params;
+    await User.findByIdAndUpdate(id, { $set: { follows: follows } });
+    res.status(200).json({ message: "Follows list updated successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 export default router;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -8,7 +8,7 @@ function Login() {
     password: "",
   });
 
-  const navigate = useNavigate(); // ✅ Initialize `useNavigate` here
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -62,8 +62,9 @@ function Login() {
               />
               <br /><br />
 
-              <button type="submit" className="btn btn-primary">Submit</button>
+              <button type="submit" className="btn btn-primary mb-3">Submit</button><br></br>
             </form>
+            <Link to="/signup" ><p className="mt-2">New User! SignUp Now</p></Link>
           </div>
         </div>
         <div className="col-4 joy">

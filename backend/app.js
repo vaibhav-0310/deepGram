@@ -16,7 +16,10 @@ import MongoStore from "connect-mongo";
 const app = express();
 
 //middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173', // your frontend URL
+  credentials: true,
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -44,13 +47,14 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req,res,next)=>{
   const curr = req.user;
   res.locals.curr = curr;
-  console.log(curr);
+  console.log(req.user);
   next();
 });
 
 app.use(UserRoutes);
 app.use(DashboardRoutes);
 app.use(PostsRoutes);
+
 
 const db = async () => {
   mongoose.connect("mongodb://127.0.0.1:27017/deepGram");
